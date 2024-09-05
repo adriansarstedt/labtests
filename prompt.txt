@@ -1,0 +1,5 @@
+Using your optical analysis can you please create a json version of this pdf of my pdf result. Please do not write code.
+
+I do not need personal information I just need the test results in the following format. Do not have any whitespace in the responses.
+
+[{"Result Name": "WBC","Result": "4.6","Range/Units": "3.4-10.8 /x10E3/uL"}]

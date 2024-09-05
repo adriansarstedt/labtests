@@ -1,0 +1,32 @@
+# Virtual Environment
+venv/
+env/
+.venv/
+.env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local configuration file
+config.ini
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# IDE specific files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Image files (if you don't want to track them)
+*.png
+*.jpg
+*.jpeg
