@@ -30,12 +30,37 @@ def process_image(image_path):
                 ]
             }
         ],
-        max_tokens=1000
+        max_tokens=2000
     )
 
     # Return the result
     return response.choices[0].message.content
 
-# Example usage:
-# result = process_image("labcorpresults.png")
-# print(result)
+
+import streamlit as st
+import tempfile
+import os
+
+st.title("Lab Result Tracker")
+
+uploaded_file = st.file_uploader("Choose an image of lab results...", type=["png", "jpg", "jpeg"])
+
+if uploaded_file is not None:
+    # Create a temporary file to save the uploaded image
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.png') as tmp_file:
+        tmp_file.write(uploaded_file.getvalue())
+        tmp_file_path = tmp_file.name
+
+    with st.spinner('Reading results...'):
+        # Process the image
+        result = process_image(tmp_file_path)
+    
+    # Display the result above the image
+    st.subheader("Lab Results:")
+    st.write(result)
+
+    # Display the image
+    st.image(uploaded_file, caption='Uploaded Image', use_column_width=True)
+
+    # Clean up the temporary file
+    os.unlink(tmp_file_path)
